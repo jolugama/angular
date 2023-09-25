@@ -2,7 +2,8 @@
 FROM node:18 as build
 
 # Establecer el directorio de trabajo
-WORKDIR /app
+WORKDIR /usr/src/app/angular
+
 
 # Copiar los archivos package.json y package-lock.json
 COPY package*.json ./
@@ -20,4 +21,4 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copiar la aplicación construida desde la imagen de construcción
-COPY --from=build /app/dist/super-hero /usr/share/nginx/html
+COPY --from=build /usr/src/app/angular/dist/super-hero /usr/share/nginx/html
