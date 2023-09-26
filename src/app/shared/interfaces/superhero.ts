@@ -14,6 +14,8 @@ export interface Superhero {
   images?: string[];
 }
 
+export type SuperheroSearch = Partial<Superhero>;
+
 export enum Universe {
   Dc = 'DC',
   Marvel = 'Marvel',

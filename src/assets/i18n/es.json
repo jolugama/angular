@@ -1,3 +1,8 @@
 {
-  "hello": "Hola"
+  "LIST": {
+    "NAME": "Nombre",
+    "ALIAS": "Apodo",
+    "UNIVERSE": "Universo",
+    "ABILITIES": "Habilidades"
+  }
 }
