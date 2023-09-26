@@ -1,3 +1,47 @@
+
+## TODO
+
+angular material
+eslint
+traducciones: ngx-translate
+interceptor para loading (borrado, edición)
+
+
+
+paginas: 
+servicio crud superheroes
+heroes-list
+  botones añadir, editar, borrar(con confirmación). input para filtro de héroe
+heroe-new
+  formulario de creación
+heroe-edit (comparte formulario de creación) (shared)
+detalle heroe
+test unitarios
+
+
+
+directiva input. siempre mayuscula
+pipes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # SuperHero
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
@@ -25,3 +69,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## scripts
+
+### generate:page
+npm run generate:page --name=nameOfComponent
