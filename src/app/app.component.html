@@ -1,5 +1,5 @@
-<button (click)="switchLanguage('en')">English</button>
-<button (click)="switchLanguage('es')">Español</button>
-<button (click)="switchLanguage('fr')">Frances</button>
+<button [color]="selectedLanguage === 'en' ? 'primary' : 'accent'" mat-button (click)="switchLanguage('en')">English</button>
+<button [color]="selectedLanguage === 'es' ? 'primary' : 'accent'" mat-button (click)="switchLanguage('es')">Español</button>
+<button [color]="selectedLanguage === 'fr' ? 'primary' : 'accent'" mat-button (click)="switchLanguage('fr')">Français</button>
 
 <router-outlet></router-outlet>

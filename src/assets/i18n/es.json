@@ -1,4 +1,8 @@
 {
+  "ACTIONS": {
+    "EDIT": "Editar",
+    "DELETE": "Borrar"
+  },
   "LIST": {
     "NAME": "Nombre",
     "ALIAS": "Apodo",

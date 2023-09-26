@@ -13,8 +13,13 @@ export class HeroesService {
 
   constructor(private http: HttpClient) {}
 
-  getSuperheroes(): Observable<Superheroes> {
-    return this.http.get<Superheroes>(`${this.restURL}/${ENDPOINTS.SUPERHEROES}`);
+  // getSuperheroes(): Observable<Superheroes> {
+  //   return this.http.get<Superheroes>(`${this.restURL}/${ENDPOINTS.SUPERHEROES}`);
+  // }
+
+  getSuperheroes(pageIndex: number = 0): Observable<Superheroes> {
+    const params = { pageIndex: pageIndex };
+    return this.http.get<Superheroes>(`${this.restURL}/${ENDPOINTS.SUPERHEROES}`, { params });
   }
 
   getSuperheroId(id: number): Observable<Superhero> {

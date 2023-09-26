@@ -1,8 +1,17 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { tap } from 'rxjs';
-import { Superhero, SuperheroSearch } from 'src/app/shared/interfaces/superhero';
+import { Paginator } from 'src/app/shared/interfaces/paginator';
+import {
+  Superhero,
+  SuperheroSearch,
+} from 'src/app/shared/interfaces/superhero';
 import { HeroesService } from 'src/app/shared/services/heroes/heroes.service';
 
 @Component({
@@ -13,12 +22,42 @@ import { HeroesService } from 'src/app/shared/services/heroes/heroes.service';
 })
 export class HeroesListComponent implements OnInit {
   superheroes: Superhero[] = [];
-  displayedColumns: string[] = ['name', 'alias', 'universe', 'abilities'];
+  displayedColumns: string[] = [
+    'name',
+    'alias',
+    'universe',
+    'abilities',
+    'edit',
+    'delete',
+  ];
+
+  paginator: Paginator = {
+    length: 0,
+    pageSize: 5,
+    pageIndex: 0,
+  };
+
+  pageEvent!: PageEvent;
+
+  handlePageEvent(e: PageEvent) {
+    this.paginator = {
+      length: e.length,
+      pageSize: e.pageSize,
+      pageIndex: e.pageIndex,
+      pageEvent: e,
+    };
+  }
+
+  // setPageSizeOptions(setPageSizeOptionsInput: string) {
+  //   if (setPageSizeOptionsInput) {
+  //     this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  //   }
+  // }
 
   constructor(
     private heroesService: HeroesService,
     private cdr: ChangeDetectorRef,
-    private translate: TranslateService) {}
+  ) {}
 
   ngOnInit(): void {
     // const search: SuperheroSearch = {
@@ -30,9 +69,7 @@ export class HeroesListComponent implements OnInit {
     // this.filterHeroes(search);
 
     this.getHeroes();
-
   }
-
 
   // PRIVATE METHODS
 
@@ -43,7 +80,13 @@ export class HeroesListComponent implements OnInit {
   private getHeroes() {
     this.heroesService
       .getSuperheroes()
-      .pipe(tap((heroes) => console.log(heroes.superheroes)))
+      .pipe(
+        tap((heroes) => {
+          this.paginator.length = heroes.length;
+          this.paginator.pageSize = heroes.pageSize;
+          console.log(heroes);
+        }),
+      )
       .subscribe({
         next: (data) => {
           this.superheroes = data.superheroes;
@@ -54,11 +97,12 @@ export class HeroesListComponent implements OnInit {
   }
 
   private filterHeroes(search: SuperheroSearch) {
-    this.heroesService.getSuperheroSearch(search)
-    .pipe(tap((heroes) => console.log(heroes.superheroes)))
-    .subscribe({
-      next: (data) => (this.superheroes = data.superheroes),
-      error: (error) => this.handleErrorHeroes(error),
-    });
+    this.heroesService
+      .getSuperheroSearch(search)
+      .pipe(tap((heroes) => console.log(heroes.superheroes)))
+      .subscribe({
+        next: (data) => (this.superheroes = data.superheroes),
+        error: (error) => this.handleErrorHeroes(error),
+      });
   }
 }

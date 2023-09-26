@@ -8,12 +8,16 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'superHero';
+  selectedLanguage: string;
 
   constructor(private translate: TranslateService) {
-    translate.setDefaultLang('en');
+    this.selectedLanguage = 'en';
+    translate.setDefaultLang(this.selectedLanguage);
+
   }
 
   switchLanguage(language: string) {
+    this.selectedLanguage = language;
     this.translate.use(language);
   }
 }

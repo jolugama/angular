@@ -1,4 +1,8 @@
 {
+  "ACTIONS": {
+    "EDIT": "Edit",
+    "DELETE": "Delete"
+  },
   "LIST": {
     "NAME": "Name",
     "ALIAS": "Alias",
