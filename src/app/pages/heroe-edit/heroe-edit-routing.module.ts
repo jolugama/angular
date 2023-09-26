@@ -6,6 +6,6 @@ const routes: Routes = [{ path: '', component: HeroeEditComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HeroeEditRoutingModule { }
+export class HeroeEditRoutingModule {}

@@ -8,7 +8,7 @@ describe('HeroeEditComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeroeEditComponent]
+      declarations: [HeroeEditComponent],
     });
     fixture = TestBed.createComponent(HeroeEditComponent);
     component = fixture.componentInstance;

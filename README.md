@@ -4,7 +4,6 @@
 angular material
 eslint
 traducciones: ngx-translate
-interceptor para loading (borrado, edición)
 
 
 
@@ -16,13 +15,14 @@ heroe-new
   formulario de creación
 heroe-edit (comparte formulario de creación) (shared)
 detalle heroe
-test unitarios
 
 
+interceptor para loading (borrado, edición)
 
 directiva input. siempre mayuscula
 pipes
-
+guards
+test unitarios
 
 
 

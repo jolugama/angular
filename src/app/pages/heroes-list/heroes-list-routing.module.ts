@@ -6,6 +6,6 @@ const routes: Routes = [{ path: '', component: HeroesListComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HeroesListRoutingModule { }
+export class HeroesListRoutingModule {}
