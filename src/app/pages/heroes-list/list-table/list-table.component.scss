@@ -1,0 +1,14 @@
+.ability-button {
+  margin: 4px 4px;
+  font-size: 0.8em;
+  padding: 0px 6px;
+}
+
+
+button[mat-button] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+

@@ -17,14 +17,13 @@ module.exports = {
     {
       files: ["*.ts"],
       parserOptions: {
-        "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
-        ],
-        "createDefaultProgram": true,
+        project: ["tsconfig.json"],
+        createDefaultProgram: true,
         tsconfigRootDir: __dirname,
       },
-      rules: {},
+      rules: {
+        "max-len": ["error", { code: 120 }],
+      },
     },
     {
       files: ["*.html"],

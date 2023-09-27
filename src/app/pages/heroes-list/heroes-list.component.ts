@@ -5,7 +5,6 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
 import { tap } from 'rxjs';
 import { Paginator } from 'src/app/shared/interfaces/paginator';
 import {
@@ -22,37 +21,8 @@ import { HeroesService } from 'src/app/shared/services/heroes/heroes.service';
 })
 export class HeroesListComponent implements OnInit {
   superheroes: Superhero[] = [];
-  displayedColumns: string[] = [
-    'name',
-    'alias',
-    'universe',
-    'abilities',
-    'edit',
-    'delete',
-  ];
 
-  paginator: Paginator = {
-    length: 0,
-    pageSize: 5,
-    pageIndex: 0,
-  };
-
-  pageEvent!: PageEvent;
-
-  handlePageEvent(e: PageEvent) {
-    this.paginator = {
-      length: e.length,
-      pageSize: e.pageSize,
-      pageIndex: e.pageIndex,
-      pageEvent: e,
-    };
-  }
-
-  // setPageSizeOptions(setPageSizeOptionsInput: string) {
-  //   if (setPageSizeOptionsInput) {
-  //     this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-  //   }
-  // }
+  paginator!: Paginator;
 
   constructor(
     private heroesService: HeroesService,
@@ -71,29 +41,34 @@ export class HeroesListComponent implements OnInit {
     this.getHeroes();
   }
 
-  // PRIVATE METHODS
-
-  private handleErrorHeroes(error: HttpErrorResponse) {
-    console.error(error);
+  onPaginatorChange(event: Paginator) {
+    console.log(event);
+    this.getHeroes(event.pageIndex);
+    this.paginator = event;
   }
 
-  private getHeroes() {
+  getHeroes(pageIndex: number = 0) {
     this.heroesService
-      .getSuperheroes()
-      .pipe(
-        tap((heroes) => {
-          this.paginator.length = heroes.length;
-          this.paginator.pageSize = heroes.pageSize;
-          console.log(heroes);
-        }),
-      )
+      .getSuperheroes(pageIndex)
+      .pipe(tap((heroes) => console.log(heroes)))
       .subscribe({
-        next: (data) => {
-          this.superheroes = data.superheroes;
+        next: (heroes) => {
+          this.superheroes = heroes.superheroes;
+          this.paginator = {
+            length: heroes.length,
+            pageSize: 5, // heroes.pageSize,
+            pageIndex: heroes.pageIndex,
+          };
           this.cdr.detectChanges();
         },
         error: (error) => this.handleErrorHeroes(error),
       });
+  }
+
+  // PRIVATE METHODS
+
+  private handleErrorHeroes(error: HttpErrorResponse) {
+    console.error(error);
   }
 
   private filterHeroes(search: SuperheroSearch) {

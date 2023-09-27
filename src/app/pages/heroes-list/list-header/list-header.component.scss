@@ -1,0 +1,25 @@
+.container-form {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 800px;
+  flex-direction: column;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: .8em 5em;
+}
+
+
+
+
+
+
+
+@media (min-width: 750px) {
+  .container-form {
+    flex-direction: row;
+    margin-left: auto;
+  }
+}

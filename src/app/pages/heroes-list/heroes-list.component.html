@@ -1,86 +1,12 @@
-<!-- <p>heroes-list works!</p>
-<button mat-button>Basic</button>
-<button mat-button color="primary">Primary</button>
-<button mat-button color="accent">Accent</button>
-<button mat-button color="warn">Warn</button>
-<button mat-button disabled>Disabled</button> -->
-
-
-<!-- botonera de acciones: añadir, editar, borrar -->
-
-<!-- buscador :   input nombre heroe/alias   . select multiseleccionable habilidad -->
 
 
 <!-- tabla paginada -->
 
+<app-list-header></app-list-header>
 
-<ng-container *ngIf="superheroes.length>0">
+<app-list-table [superheroes]="superheroes" (updateTable)="getHeroes(paginator.pageIndex)"></app-list-table>
 
-  <table mat-table [dataSource]="superheroes" class="mat-elevation-z8">
-
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> {{ 'LIST.NAME' | translate }} </th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-button color="warn" [routerLink]="['/detail', element.id]">{{ element.name }}</button>
-      </td>
-    </ng-container>
-    <ng-container matColumnDef="alias">
-      <th mat-header-cell *matHeaderCellDef> {{ 'LIST.ALIAS' | translate }} </th>
-      <td mat-cell *matCellDef="let element"> {{element.alias}} </td>
-    </ng-container>
-    <ng-container matColumnDef="universe">
-      <th mat-header-cell *matHeaderCellDef> {{ 'LIST.UNIVERSE' | translate }} </th>
-      <td mat-cell *matCellDef="let element"> {{element.universe}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="abilities">
-      <th mat-header-cell *matHeaderCellDef> {{ 'LIST.ABILITIES' | translate }} </th>
-      <td mat-cell *matCellDef="let element">
-        <span *ngFor="let ability of element.abilities">
-          <button class="ability-button" mat-raised-button>
-            {{ ability }}
-          </button>
-        </span>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef> </th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-button mat-raised-button color="primary" [routerLink]="['/edit', element.id]">
-          <mat-icon>edit</mat-icon>
-          {{ 'ACTIONS.EDIT' | translate }}
-        </button>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef> </th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-button mat-raised-button color="warn">
-          <mat-icon>close</mat-icon>
-          {{ 'ACTIONS.DELETE' | translate }}</button>
-      </td>
-    </ng-container>
-
-
-    <!-- <ng-container matColumnDef="images">
-      <th mat-header-cell *matHeaderCellDef> Image </th>
-      <td mat-cell *matCellDef="let element">
-        <img [src]="'http://localhost:3000/images/' + element.images[0]" alt="{{element.images[0]}}"  height="100">
-      </td>
-    </ng-container> -->
+<app-list-pagination [paginator]="paginator" (paginatorChange)="onPaginatorChange($event)"></app-list-pagination>
 
 
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-  <!-- paginator -->
-
-  <mat-paginator (page)="handlePageEvent($event)" [length]="paginator.length" [pageSize]="paginator.pageSize"
-    [pageIndex]="paginator.pageIndex" aria-label="Select page">
-  </mat-paginator>
-
-</ng-container>

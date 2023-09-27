@@ -1,0 +1,5 @@
+<ng-container *ngIf="paginator">
+  <mat-paginator (page)="handlePageEvent($event)" [length]="paginator.length" [pageSize]="paginator.pageSize"
+    [pageIndex]="paginator.pageIndex" aria-label="Select page">
+  </mat-paginator>
+</ng-container>

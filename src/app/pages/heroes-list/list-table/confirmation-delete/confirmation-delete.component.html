@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Eliminar Heroe</h2>
+<mat-dialog-content>
+  <div>
+    ¿Estás seguro?
+  </div>
+  <div>
+    <div>Nombre: {{data.name}}</div>
+    <div>Alias: {{data.alias}}</div>
+    <mat-spinner *ngIf="isLoading" diameter="30">Loading image...</mat-spinner>
+    <img *ngIf=" data.images" [src]="'http://localhost:3000/images/' + data.images[0]" (load)="imageLoaded()"  alt="">
+
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No</button>
+  <button mat-button cdkFocusInitial (click)="onYesClick()">Sí</button>
+</mat-dialog-actions>

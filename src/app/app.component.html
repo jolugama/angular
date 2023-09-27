@@ -2,4 +2,11 @@
 <button [color]="selectedLanguage === 'es' ? 'primary' : 'accent'" mat-button (click)="switchLanguage('es')">Español</button>
 <button [color]="selectedLanguage === 'fr' ? 'primary' : 'accent'" mat-button (click)="switchLanguage('fr')">Français</button>
 
+<div class="header"></div>
+
+<!-- TODO: move to new component loading -->
+<div class="loading-overlay" *ngIf="loading$ | async">
+  <mat-progress-spinner class="spinner" mode="indeterminate"></mat-progress-spinner>
+</div>
+
 <router-outlet></router-outlet>

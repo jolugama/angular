@@ -1,4 +1,4 @@
-import { Paginator } from "./paginator";
+import { Paginator } from './paginator';
 
 export interface Superheroes extends Paginator {
   superheroes: Superhero[];
