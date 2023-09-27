@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 import {
   Abilities,
   SuperheroSearch,
@@ -21,11 +21,12 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListHeaderComponent implements OnInit {
-  @Output() updateSearch = new EventEmitter<void>();
+  @Output() updateSearch = new EventEmitter<SuperheroSearch>();
   form!: FormGroup;
-  private searchTextSubject = new Subject<string>();
   searchText = '';
-  universeKeys: string[] = Object.values(Universe);
+  universeKeys: string[] = Object.values(Universe).sort((a, b) =>
+    a.toLowerCase().localeCompare(b.toLowerCase()),
+  );
   abilitiesKeys: string[] = Object.values(Abilities);
 
   constructor(
@@ -35,7 +36,7 @@ export class ListHeaderComponent implements OnInit {
     this.createForm();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form
       .get('nameControl')!
       .valueChanges.pipe(debounceTime(600), distinctUntilChanged())
@@ -48,16 +49,23 @@ export class ListHeaderComponent implements OnInit {
     this.search();
   }
 
-  onDblClick(event: Event) {
+  onDblClick(event: Event): void {
     const input = event.target as HTMLInputElement;
     input.value = '';
     this.searchText = '';
     this.search();
   }
 
+  deleteFilters() {
+    Object.keys(this.form.controls).forEach((key) => {
+      this.form.get(key)?.setValue('');
+    });
+    this.search();
+  }
+
   // PRIVATE METHODS
 
-  private createForm() {
+  private createForm(): void {
     this.form = this.fb.group({
       nameControl: [''],
       universeControl: [''],
@@ -65,15 +73,15 @@ export class ListHeaderComponent implements OnInit {
     });
   }
 
-  private search() {
+  private search(): void {
     const superheroSearch: SuperheroSearch = {
-      name: this.form.value.nameControl,
+      name: this.form.value.nameControl?.trim().toLowerCase(),
       universe: this.form.value.universeControl,
       abilities: this.form.value.abilitiesControl,
     };
 
     // Clean empty values
-    const cleanedSearch: { [key: string]: unknown } = {};
+    const cleanedSearch: { [key: string]: unknown } = {} as SuperheroSearch;
     Object.keys(superheroSearch).forEach((key) => {
       const value = (superheroSearch as { [key: string]: unknown })[key];
       if (Array.isArray(value)) {
@@ -85,6 +93,8 @@ export class ListHeaderComponent implements OnInit {
       }
     });
 
-    console.log('Buscando:', cleanedSearch);
+    const heroSearch = cleanedSearch as SuperheroSearch;
+    this.updateSearch.emit(heroSearch);
+    console.log('Buscando:', heroSearch);
   }
 }

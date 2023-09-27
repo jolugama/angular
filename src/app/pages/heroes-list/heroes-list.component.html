@@ -1,12 +1,7 @@
 
 
-<!-- tabla paginada -->
+<app-list-header (updateSearch)="filterHeroes($event)"></app-list-header>
 
-<app-list-header></app-list-header>
-
-<app-list-table [superheroes]="superheroes" (updateTable)="getHeroes(paginator.pageIndex)"></app-list-table>
+<app-list-table [superheroes]="superheroes" (updateTable)="filterHeroes(search,paginator.pageIndex)"></app-list-table>
 
 <app-list-pagination [paginator]="paginator" (paginatorChange)="onPaginatorChange($event)"></app-list-pagination>
-
-
-

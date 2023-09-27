@@ -17,7 +17,6 @@ export class ConfirmationDeleteComponent {
   }
 
   imageLoaded() {
-    // debugger;
     this.isLoading = false;
   }
 

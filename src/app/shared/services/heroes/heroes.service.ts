@@ -17,10 +17,6 @@ export class HeroesService {
 
   constructor(private http: HttpClient) {}
 
-  // getSuperheroes(): Observable<Superheroes> {
-  //   return this.http.get<Superheroes>(`${this.restURL}/${ENDPOINTS.SUPERHEROES}`);
-  // }
-
   getSuperheroes(pageIndex: number = 0): Observable<Superheroes> {
     const params = { pageIndex: pageIndex };
     return this.http.get<Superheroes>(
@@ -35,11 +31,15 @@ export class HeroesService {
     );
   }
 
-  getSuperheroSearch(params: SuperheroSearch): Observable<Superheroes> {
+  getSuperheroSearch(
+    search: SuperheroSearch,
+    pageIndex: number = 0,
+  ): Observable<Superheroes> {
+    const queryParams = { ...search, pageIndex };
     return this.http.get<Superheroes>(
       `${this.restURL}/${ENDPOINTS.SUPERHEROES_SEARCH}`,
       {
-        params,
+        params: queryParams,
       },
     );
   }

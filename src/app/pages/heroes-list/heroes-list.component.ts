@@ -21,6 +21,7 @@ import { HeroesService } from 'src/app/shared/services/heroes/heroes.service';
 })
 export class HeroesListComponent implements OnInit {
   superheroes: Superhero[] = [];
+  search: Partial<Superhero> = {};
 
   paginator!: Paginator;
 
@@ -30,27 +31,21 @@ export class HeroesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // const search: SuperheroSearch = {
-    //   name: 'n',
-    //   alias: 'ce',
-    //   universe: 'DC' as Universe,
-    //   abilities: ['intelligence','martial arts training'] as Abilities[],
-    // };
-    // this.filterHeroes(search);
-
-    this.getHeroes();
+    const search: SuperheroSearch = {} as SuperheroSearch;
+    this.filterHeroes(search);
   }
 
-  onPaginatorChange(event: Paginator) {
+  onPaginatorChange(event: Paginator): void {
     console.log(event);
-    this.getHeroes(event.pageIndex);
+    this.filterHeroes(this.search, event.pageIndex);
     this.paginator = event;
   }
 
-  getHeroes(pageIndex: number = 0) {
+  filterHeroes(search: SuperheroSearch, pageIndex: number = 0): void {
+    this.search = search;
     this.heroesService
-      .getSuperheroes(pageIndex)
-      .pipe(tap((heroes) => console.log(heroes)))
+      .getSuperheroSearch(search, pageIndex)
+      .pipe(tap((heroes) => console.log(heroes.superheroes)))
       .subscribe({
         next: (heroes) => {
           this.superheroes = heroes.superheroes;
@@ -67,17 +62,9 @@ export class HeroesListComponent implements OnInit {
 
   // PRIVATE METHODS
 
-  private handleErrorHeroes(error: HttpErrorResponse) {
+  private handleErrorHeroes(error: HttpErrorResponse): void {
+    this.superheroes = [];
+    this.cdr.detectChanges();
     console.error(error);
-  }
-
-  private filterHeroes(search: SuperheroSearch) {
-    this.heroesService
-      .getSuperheroSearch(search)
-      .pipe(tap((heroes) => console.log(heroes.superheroes)))
-      .subscribe({
-        next: (data) => (this.superheroes = data.superheroes),
-        error: (error) => this.handleErrorHeroes(error),
-      });
   }
 }

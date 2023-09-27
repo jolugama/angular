@@ -7,7 +7,7 @@
     "build": "ng build",
     "lint": "eslint '**/*.ts' --quiet --fix",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --code-coverage",
     "generate:page": "ng generate module pages/$npm_config_name --route $npm_config_name --module app.module"
   },
   "private": true,
