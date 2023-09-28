@@ -13,6 +13,7 @@ import {
   SuperheroSearch,
   Universe,
 } from 'src/app/shared/interfaces/superhero';
+import { HeroesService } from 'src/app/shared/services/heroes/heroes.service';
 
 @Component({
   selector: 'app-list-header',
@@ -32,6 +33,7 @@ export class ListHeaderComponent implements OnInit {
   constructor(
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
+    private heroesService: HeroesService,
   ) {
     this.createForm();
   }
@@ -80,20 +82,8 @@ export class ListHeaderComponent implements OnInit {
       abilities: this.form.value.abilitiesControl,
     };
 
-    // Clean empty values
-    const cleanedSearch: { [key: string]: unknown } = {} as SuperheroSearch;
-    Object.keys(superheroSearch).forEach((key) => {
-      const value = (superheroSearch as { [key: string]: unknown })[key];
-      if (Array.isArray(value)) {
-        if (value.length > 0) {
-          cleanedSearch[key] = value;
-        }
-      } else if (value !== null && value !== '') {
-        cleanedSearch[key] = value;
-      }
-    });
-
-    const heroSearch = cleanedSearch as SuperheroSearch;
+    const heroSearch: SuperheroSearch =
+      this.heroesService.cleanEmptyValues(superheroSearch);
     this.updateSearch.emit(heroSearch);
     console.log('Buscando:', heroSearch);
   }

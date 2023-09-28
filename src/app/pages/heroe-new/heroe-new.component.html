@@ -1,1 +1,80 @@
-<p>heroe-new works!</p>
+<div class="center-container2">
+
+  <button mat-raised-button color="accent" (click)="goBack()">Back</button>
+  <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar>
+          <!-- TODO: Add image -->
+        </div>
+        <mat-card-title>New Superhero form
+        </mat-card-title>
+        <mat-card-subtitle>Add a new hero</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content class="form-content">
+        <!-- form -->
+
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Alias</mat-label>
+          <input matInput formControlName="alias" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description" />
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+          <mat-label>Universe</mat-label>
+          <mat-select formControlName="universe">
+            <mat-option *ngFor="let universe of universes" [value]="universe">
+              {{ universe }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Abilities</mat-label>
+          <mat-select formControlName="abilities" multiple>
+            <mat-option *ngFor="let ability of abilities" [value]="ability">
+              {{ ability }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>First appearance</mat-label>
+          <input matInput formControlName="firstAppearance" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Teams</mat-label>
+          <input matInput formControlName="teams" />
+        </mat-form-field>
+
+        <!-- end form -->
+
+      </mat-card-content>
+
+      <mat-card-actions>
+        <div [matTooltip]="newForm.invalid ? 'Complete the form to enable' : ''"
+          matTooltipDisabled="{{!newForm.invalid}}">
+          <button mat-raised-button color="primary" [disabled]="newForm.invalid">
+            Create Superhero
+          </button>
+        </div>
+
+      </mat-card-actions>
+    </mat-card>
+
+  </form>
+
+</div>

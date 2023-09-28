@@ -4,21 +4,28 @@ import {
   HttpClientModule,
 } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoadingInterceptor } from './shared/services/loadingInterceptor/loading-interceptor.interceptor';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+import { LoadingInterceptor } from './shared/services/loadingInterceptor/loading.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-const angularMaterialModules = [MatProgressSpinnerModule, MatButtonModule];
+const angularMaterialModules = [
+  MatProgressSpinnerModule,
+  MatButtonModule,
+  MatSnackBarModule,
+];
 
 @NgModule({
   declarations: [AppComponent],

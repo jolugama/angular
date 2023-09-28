@@ -30,7 +30,7 @@
 </form>
 
 <div class="button-container">
-  <button mat-raised-button color="accent">New hero</button>
+  <button mat-raised-button color="accent" [routerLink]="['/new']" routerLinkActive="router-link-active" >New hero</button>
   <button mat-raised-button color="warn" (click)="deleteFilters()">Clear filters</button>
 </div>
 

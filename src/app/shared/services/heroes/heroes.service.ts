@@ -49,4 +49,29 @@ export class HeroesService {
       `${this.restURL}/${ENDPOINTS.SUPERHERO}/${id}`,
     );
   }
+
+  createSuperhero(hero: SuperheroSearch): Observable<Superhero> {
+    return this.http.post<Superhero>(
+      `${this.restURL}${ENDPOINTS.SUPERHERO}`,
+      hero,
+    );
+  }
+
+  cleanEmptyValues(superheroSearch: SuperheroSearch): SuperheroSearch {
+    const cleanedSearch: { [key: string]: unknown } = {} as SuperheroSearch;
+    Object.keys(superheroSearch).forEach((key) => {
+      const value = (superheroSearch as { [key: string]: unknown })[key];
+
+      if (Array.isArray(value)) {
+        if (value.length > 0) {
+          cleanedSearch[key] = value;
+        }
+      } else if (value !== null && value !== '') {
+        cleanedSearch[key] = value;
+      }
+    });
+
+    const result = cleanedSearch as SuperheroSearch;
+    return result;
+  }
 }

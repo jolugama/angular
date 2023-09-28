@@ -1,4 +1,5 @@
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
@@ -6,12 +7,16 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, finalize, tap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable, catchError, finalize, tap } from 'rxjs';
 import { LoadingService } from '../loading/loading.service';
 
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
-  constructor(private loadingService: LoadingService) {}
+  constructor(
+    private loadingService: LoadingService,
+    private snackBar: MatSnackBar,
+  ) {}
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler,
@@ -22,6 +27,15 @@ export class LoadingInterceptor implements HttpInterceptor {
         if (event instanceof HttpResponse) {
           this.loadingService.hide();
         }
+      }),
+      catchError((err: HttpErrorResponse) => {
+        if (err instanceof HttpErrorResponse && err.status === 404) {
+          this.snackBar.open('Ups: No encontrado! 🤪', undefined, {
+            duration: 2000,
+            verticalPosition: 'top',
+          });
+        }
+        throw err;
       }),
       finalize(() => this.loadingService.hide()),
     );

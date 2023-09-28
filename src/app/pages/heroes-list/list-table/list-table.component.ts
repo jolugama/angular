@@ -47,6 +47,8 @@ export class ListTableComponent {
     });
   }
 
+  // private methods
+
   private deleteItem(hero: Superhero): void {
     console.log('deleteItem', hero);
     this.heroesService.deleteSuperhero(hero.id).subscribe({

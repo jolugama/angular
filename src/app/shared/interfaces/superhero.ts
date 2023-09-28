@@ -7,7 +7,7 @@ export interface Superheroes extends Paginator {
 export interface Superhero {
   id: number;
   name: string;
-  alias: string;
+  alias?: string;
   description: string;
   universe: Universe;
   abilities: Abilities[];
