@@ -8,6 +8,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable, catchError, finalize, tap } from 'rxjs';
 import { LoadingService } from '../loading/loading.service';
 
@@ -16,6 +17,7 @@ export class LoadingInterceptor implements HttpInterceptor {
   constructor(
     private loadingService: LoadingService,
     private snackBar: MatSnackBar,
+    private translate: TranslateService,
   ) {}
   intercept(
     request: HttpRequest<unknown>,
@@ -29,8 +31,9 @@ export class LoadingInterceptor implements HttpInterceptor {
         }
       }),
       catchError((err: HttpErrorResponse) => {
+        const ups = this.translate.instant('ACTIONS.UPS');
         if (err instanceof HttpErrorResponse && err.status === 404) {
-          this.snackBar.open('Ups: No encontrado! 🤪', undefined, {
+          this.snackBar.open(`🚨 ${ups}`, undefined, {
             duration: 2000,
             verticalPosition: 'top',
           });

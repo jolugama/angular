@@ -8,9 +8,9 @@
         <div mat-card-avatar>
           <!-- TODO: Add image -->
         </div>
-        <mat-card-title>New Superhero form
+        <mat-card-title>{{ isNew ? 'New Superhero form' : 'Update Superhero form' }}
         </mat-card-title>
-        <mat-card-subtitle>Add a new hero</mat-card-subtitle>
+        <mat-card-subtitle>{{ isNew ? 'Add a new hero' : 'Update hero' }}</mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content class="form-content">
@@ -68,8 +68,9 @@
         <div [matTooltip]="newForm.invalid ? 'Complete the form to enable' : ''"
           matTooltipDisabled="{{!newForm.invalid}}">
           <button mat-raised-button color="primary" [disabled]="newForm.invalid">
-            Create Superhero
+            {{ isNew ? 'Create Superhero' : 'Update Superhero' }}
           </button>
+
         </div>
 
       </mat-card-actions>

@@ -1,12 +1,58 @@
 {
   "ACTIONS": {
     "EDIT": "Edit",
-    "DELETE": "Delete"
+    "DELETE": "Delete",
+    "NO": "No",
+    "YES": "Yes",
+    "OK": "Ok",
+    "LOADING": "Loading...",
+    "UPS": "Ups... not found."
   },
   "LIST": {
     "NAME": "Name",
     "ALIAS": "Alias",
     "UNIVERSE": "Universe",
     "ABILITIES": "Abilities"
+  },
+  "DETAIL": {
+    "MESSAGE": "Oops, sorry but I didn't have time to see this screen. {{id}}",
+    "IMAGE_HERO": "Hero Image",
+    "DESCRIPTION": "Hero Description"
+  },
+  "UPDATE": {
+    "TITLE": "Hero Updated",
+    "MESSAGE": "Hero successfully updated"
+  },
+  "UPDATE_ERROR": {
+    "TITLE": "Hero Not Updated",
+    "MESSAGE": "It seems there has been an error updating the hero. Please try again later."
+  },
+  "NEW": {
+    "TITLE": "Hero Created",
+    "MESSAGE": "The hero has been successfully created",
+    "QUESTION": "Do you want to go back to the hero list?"
+  },
+  "NEW_ERROR": {
+    "TITLE": "Hero Not Created",
+    "MESSAGE": "It seems there has been an error creating the hero. Please try again later.",
+    "QUESTION": "Do you want to go back to the hero list?"
+  },
+  "FORM": {
+    "ALL": "All",
+    "NAME": "Name",
+    "ALIAS": "Alias",
+    "UNIVERSE": "Universe",
+    "ABILITIES": "Abilities",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "SELECT_UNIVERSE": "Select Universe",
+    "SELECT_ABILITIES": "Select Abilities",
+    "CLEAR_FILTERS": "Clear Filters",
+    "NEW_HERO": "New Hero",
+    "NAME_OR_ALIAS": "Name or Alias"
+  },
+  "DELETE": {
+    "TITLE": "Delete Hero",
+    "QUESTION": "Are you sure you want to delete the hero?"
   }
 }

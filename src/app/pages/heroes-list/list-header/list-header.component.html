@@ -4,22 +4,22 @@
   <div class="container-form">
   <mat-form-field>
     <input matInput appUppercase formControlName="nameControl" (dblclick)="onDblClick($event)"
-      placeholder="name or alias">
+    [placeholder]="'FORM.NAME_OR_ALIAS' | translate">
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Select Universe</mat-label>
+    <mat-label>{{ 'FORM.SELECT_UNIVERSE' | translate }}</mat-label>
     <mat-select formControlName="universeControl" (closed)="onSelectClosed()">
       <mat-option *ngFor="let universe of universeKeys" [value]="universe">
-        {{ universe | titlecase }}
+      {{ universe | titlecase }}
       </mat-option>
-      <mat-option value="">All</mat-option>
+      <mat-option value="">{{ 'FORM.ALL' | translate }}</mat-option>
     </mat-select>
   </mat-form-field>
 
 
   <mat-form-field>
-    <mat-label>Select abilities</mat-label>
+    <mat-label>{{ 'FORM.SELECT_ABILITIES' | translate }}</mat-label>
     <mat-select formControlName="abilitiesControl" multiple (closed)="onSelectClosed()">
       <mat-option *ngFor="let abilities of abilitiesKeys" [value]="abilities">
         {{ abilities | titlecase }}
@@ -30,8 +30,8 @@
 </form>
 
 <div class="button-container">
-  <button mat-raised-button color="accent" [routerLink]="['/new']" routerLinkActive="router-link-active" >New hero</button>
-  <button mat-raised-button color="warn" (click)="deleteFilters()">Clear filters</button>
+  <button mat-raised-button color="accent" [routerLink]="['/new']" routerLinkActive="router-link-active" >{{ 'FORM.NEW_HERO' | translate }}</button>
+  <button mat-raised-button color="warn" (click)="deleteFilters()">{{ 'FORM.CLEAR_FILTERS' | translate }}</button>
 </div>
 
 

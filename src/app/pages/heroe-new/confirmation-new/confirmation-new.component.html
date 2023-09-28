@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>   {{data.title}} </h2>
+<mat-dialog-content>
+  <div>
+    {{data.message}}
+  </div>
+  <div *ngIf="data.question">
+    {{data.question}}
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button *ngIf="data.isNew" cdkFocusInitial (click)="onNoClick()">{{ 'ACTIONS.NO' | translate }}</button>
+  <button mat-button  (click)="onYesClick()">{{ 'ACTIONS.OK' | translate }}</button>
+</mat-dialog-actions>

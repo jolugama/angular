@@ -1,12 +1,59 @@
 {
   "ACTIONS": {
     "EDIT": "Editar",
-    "DELETE": "Borrar"
+    "DELETE": "Eliminar",
+    "NO": "No",
+    "YES": "Sí",
+    "OK": "Aceptar",
+    "LOADING": "Cargando...",
+    "UPS": "Ups... No encontrado"
   },
   "LIST": {
     "NAME": "Nombre",
-    "ALIAS": "Apodo",
+    "ALIAS": "Alias",
     "UNIVERSE": "Universo",
     "ABILITIES": "Habilidades"
+  },
+  "DETAIL": {
+    "MESSAGE": "Vaya, lo siento pero no tuve tiempo de ver esta pantalla. {{id}}",
+    "IMAGE_HERO": "Imagen del Héroe",
+    "DESCRIPTION": "Descripción del héroe"
+  },
+  "UPDATE": {
+    "TITLE": "Héroe Actualizado",
+    "MESSAGE": "Héroe actualizado correctamente"
+  },
+  "UPDATE_ERROR": {
+    "TITLE": "El Héroe no ha sido Actualizado",
+    "MESSAGE": "Parece que ha habido un error al modificar el héroe. Inténtelo de nuevo más tarde"
+  },
+  "NEW": {
+    "TITLE": "Héroe Creado",
+    "MESSAGE": "El héroe se ha creado correctamente",
+    "QUESTION": "¿Desea volver a la lista de héroes?"
+  },
+  "NEW_ERROR": {
+    "TITLE": "El Héroe no ha sido Creado",
+    "MESSAGE": "Parece que ha habido un error al crear el héroe. Inténtelo de nuevo más tarde",
+    "QUESTION": "¿Desea volver a la lista de héroes?"
+  },
+  "FORM": {
+    "ALL": "Todo",
+    "NAME": "Nombre",
+    "ALIAS": "Alias",
+    "UNIVERSE": "Universo",
+    "ABILITIES": "Habilidades",
+    "SAVE": "Guardar",
+    "CANCEL": "Cancelar",
+    "SELECT_UNIVERSE": "Seleccionar universo",
+    "SELECT_ABILITIES": "Seleccionar habilidades",
+    "CLEAR_FILTERS": "Limpiar filtros",
+    "NEW_HERO": "Nuevo héroe",
+    "NAME_OR_ALIAS": "Nombre o alias"
+  },
+  "DELETE": {
+    "TITLE": "Eliminar héroe",
+    "QUESTION": "¿Está seguro de que desea eliminar al héroe?"
+
   }
 }

@@ -2,6 +2,7 @@ import { Paginator } from './paginator';
 
 export interface Superheroes extends Paginator {
   superheroes: Superhero[];
+  success?: boolean;
 }
 
 export interface Superhero {

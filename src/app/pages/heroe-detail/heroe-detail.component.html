@@ -1,11 +1,11 @@
 
 <div class="center-container">
   <button mat-raised-button color="accent" (click)="goBack()">Back</button>
-  <p>Oops, sorry but I didn't have time to see this screen.  id {{id}}</p>
+  <P>{{ 'DETAIL.MESSAGE' | translate : { id: id } }}</P>
 
-  <div>image hero</div>
+  <div>{{ 'DETAIL.IMAGE_HERO' | translate}}</div>
 
-  <div>description hero</div>
+  <div>{{ 'DETAIL.DESCRIPTION' | translate}}</div>
 
   <div> ;)</div>
 </div>

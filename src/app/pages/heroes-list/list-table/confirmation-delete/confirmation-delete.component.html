@@ -1,17 +1,18 @@
-<h2 mat-dialog-title>Eliminar Heroe</h2>
+<h2 mat-dialog-title>{{ 'DELETE.TITLE' | translate }}</h2>
 <mat-dialog-content>
   <div>
-    ¿Estás seguro?
+    {{ 'DELETE.QUESTION' | translate }}
   </div>
   <div>
-    <div>Nombre: {{data.name}}</div>
-    <div>Alias: {{data.alias}}</div>
+    <div>{{ 'FORM.NAME' | translate }}: {{data.name}}</div>
+    <div *ngIf="data.alias">{{ 'FORM.ALIAS' | translate }}: {{data.alias}}</div>
     <mat-spinner *ngIf="isLoading" diameter="30">Loading image...</mat-spinner>
-    <img *ngIf=" data.images" [src]="'http://localhost:3000/images/' + data.images[0]" (load)="imageLoaded()"  alt="">
-
+    <img *ngIf="data.images" [src]="imgURL" (load)="imageLoaded()"
+      (error)="onImgError()" alt="">
+      <img *ngIf="errorImg" class="no-image" src="assets/images/no-image.jpg" alt="Imagen no disponible">
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No</button>
-  <button mat-button cdkFocusInitial (click)="onYesClick()">Sí</button>
+  <button mat-button (click)="onNoClick()">{{ 'ACTIONS.NO' | translate }}</button>
+  <button mat-button cdkFocusInitial (click)="onYesClick()">{{ 'ACTIONS.YES' | translate }}</button>
 </mat-dialog-actions>

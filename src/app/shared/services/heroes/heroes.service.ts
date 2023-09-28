@@ -25,8 +25,8 @@ export class HeroesService {
     );
   }
 
-  getSuperheroId(id: number): Observable<Superhero> {
-    return this.http.get<Superhero>(
+  getSuperheroId(id: number): Observable<Superheroes> {
+    return this.http.get<Superheroes>(
       `${this.restURL}/${ENDPOINTS.SUPERHERO}/${id}`,
     );
   }
@@ -53,6 +53,14 @@ export class HeroesService {
   createSuperhero(hero: SuperheroSearch): Observable<Superhero> {
     return this.http.post<Superhero>(
       `${this.restURL}${ENDPOINTS.SUPERHERO}`,
+      hero,
+    );
+  }
+
+  updateSuperhero(hero: SuperheroSearch, id: number): Observable<Superhero> {
+    hero.id = id;
+    return this.http.put<Superhero>(
+      `${this.restURL}${ENDPOINTS.SUPERHERO}/${id}`,
       hero,
     );
   }

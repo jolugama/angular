@@ -1,6 +1,4 @@
-import { Location } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-heroe-edit',
@@ -9,18 +7,5 @@ import { ActivatedRoute } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroeEditComponent {
-  id: string | null = null;
-
-  constructor(
-    private route: ActivatedRoute,
-    private location: Location,
-  ) {}
-
-  ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-  }
-
-  goBack() {
-    this.location.back();
-  }
+  constructor() {}
 }

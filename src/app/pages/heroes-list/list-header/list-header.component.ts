@@ -28,7 +28,9 @@ export class ListHeaderComponent implements OnInit {
   universeKeys: string[] = Object.values(Universe).sort((a, b) =>
     a.toLowerCase().localeCompare(b.toLowerCase()),
   );
-  abilitiesKeys: string[] = Object.values(Abilities);
+  abilitiesKeys: string[] = Object.values(Abilities).sort((a, b) =>
+    a.toLowerCase().localeCompare(b.toLowerCase()),
+  );
 
   constructor(
     private cdr: ChangeDetectorRef,
