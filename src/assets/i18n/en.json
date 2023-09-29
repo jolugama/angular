@@ -6,13 +6,25 @@
     "YES": "Yes",
     "OK": "Ok",
     "LOADING": "Loading...",
-    "UPS": "Ups... not found."
+    "UPS": "Ups... not found.",
+    "BACK": "Back"
   },
   "LIST": {
     "NAME": "Name",
     "ALIAS": "Alias",
     "UNIVERSE": "Universe",
-    "ABILITIES": "Abilities"
+    "ABILITIES": "Abilities",
+    "DESCRIPTION": "Description",
+    "FIRST_APPEARANCE": "First Appearance",
+    "TEAMS": "Teams"
+  },
+  "EDIT": {
+    "NEW_TITLE": "New Superhero form",
+    "EDIT_TITLE": "Update Superhero form",
+    "NEW_SUBTITLE": "Add a new hero",
+    "EDIT_SUBTITLE": "Update hero",
+    "CREATE_HERO": "Create superhero",
+    "UPDATE_HERO": "Update superhero"
   },
   "DETAIL": {
     "MESSAGE": "Oops, sorry but I didn't have time to see this screen. {{id}}",

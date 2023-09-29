@@ -6,18 +6,25 @@
     "YES": "Sí",
     "OK": "Aceptar",
     "LOADING": "Cargando...",
-    "UPS": "Ups... No encontrado"
+    "UPS": "Ups... No encontrado",
+    "BACK": "Atrás"
   },
   "LIST": {
     "NAME": "Nombre",
     "ALIAS": "Alias",
     "UNIVERSE": "Universo",
-    "ABILITIES": "Habilidades"
+    "ABILITIES": "Habilidades",
+    "DESCRIPTION": "Descripción",
+    "FIRST_APPEARANCE": "Primera Aparición",
+    "TEAMS": "Equipos"
   },
-  "DETAIL": {
-    "MESSAGE": "Vaya, lo siento pero no tuve tiempo de ver esta pantalla. {{id}}",
-    "IMAGE_HERO": "Imagen del Héroe",
-    "DESCRIPTION": "Descripción del héroe"
+  "EDIT": {
+    "NEW_TITLE": "Formulario de nuevo superhéroe",
+    "EDIT_TITLE": "Actualizar formulario de superhéroe",
+    "NEW_SUBTITLE": "Añadir un nuevo héroe",
+    "EDIT_SUBTITLE": "Actualizar héroe",
+    "CREATE_HERO": "Crear superhéroe",
+    "UPDATE_HERO": "Actualizar superhéroe"
   },
   "UPDATE": {
     "TITLE": "Héroe Actualizado",

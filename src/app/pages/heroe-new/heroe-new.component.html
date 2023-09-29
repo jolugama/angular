@@ -1,6 +1,6 @@
 <div class="center-container2">
 
-  <button mat-raised-button color="accent" (click)="goBack()">Back</button>
+  <button mat-raised-button color="accent" (click)="goBack()">{{'ACTIONS.BACK' | translate}}</button>
   <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
 
     <mat-card>
@@ -8,32 +8,32 @@
         <div mat-card-avatar>
           <!-- TODO: Add image -->
         </div>
-        <mat-card-title>{{ isNew ? 'New Superhero form' : 'Update Superhero form' }}
+        <mat-card-title>{{ isNew ? ('EDIT.NEW_TITLE' | translate) : ('EDIT.EDIT_TITLE' | translate) }}
         </mat-card-title>
-        <mat-card-subtitle>{{ isNew ? 'Add a new hero' : 'Update hero' }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ isNew ? ('EDIT.NEW_SUBTITLE' | translate) : ('EDIT.EDIT_SUBTITLE' | translate) }}</mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content class="form-content">
         <!-- form -->
 
         <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
+          <mat-label>{{'LIST.NAME' | translate}}</mat-label>
           <input matInput formControlName="name" />
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Alias</mat-label>
+          <mat-label>{{'LIST.ALIAS' | translate}}</mat-label>
           <input matInput formControlName="alias" />
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Description</mat-label>
+          <mat-label>{{'LIST.DESCRIPTION' | translate}}</mat-label>
           <input matInput formControlName="description" />
         </mat-form-field>
 
 
         <mat-form-field appearance="fill">
-          <mat-label>Universe</mat-label>
+          <mat-label>{{'LIST.UNIVERSE' | translate}}</mat-label>
           <mat-select formControlName="universe">
             <mat-option *ngFor="let universe of universes" [value]="universe">
               {{ universe }}
@@ -42,7 +42,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Abilities</mat-label>
+          <mat-label>{{'LIST.ABILITIES' | translate}}</mat-label>
           <mat-select formControlName="abilities" multiple>
             <mat-option *ngFor="let ability of abilities" [value]="ability">
               {{ ability }}
@@ -51,12 +51,12 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>First appearance</mat-label>
+          <mat-label>{{'LIST.FIRST_APPEARANCE' | translate}}</mat-label>
           <input matInput formControlName="firstAppearance" />
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Teams</mat-label>
+          <mat-label>{{'LIST.TEAMS' | translate}}</mat-label>
           <input matInput formControlName="teams" />
         </mat-form-field>
 
@@ -68,7 +68,7 @@
         <div [matTooltip]="newForm.invalid ? 'Complete the form to enable' : ''"
           matTooltipDisabled="{{!newForm.invalid}}">
           <button mat-raised-button color="primary" [disabled]="newForm.invalid">
-            {{ isNew ? 'Create Superhero' : 'Update Superhero' }}
+            {{ isNew ? ('EDIT.CREATE_HERO' | translate) : ('EDIT.UPDATE_HERO' | translate) }}
           </button>
 
         </div>
